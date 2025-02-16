@@ -1,6 +1,6 @@
 # EShopMicroservices
 
-This is my implementation for the course 'ASP.NET Microservices'.
+This is my implementation for the course [.NET 8 Microservices](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet).
 
 ## Design Pattern
 - Catalog Service
