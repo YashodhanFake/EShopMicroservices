@@ -1,6 +1,6 @@
 # EShopMicroservices
 
-This is my implementation for the course 'ASP.NET Polyglot Microservices'.
+This is my implementation for the course 'ASP.NET Microservices'.
 
 ## Design Pattern
 - Catalog Service
