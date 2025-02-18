@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/Services/EShop.Service.CatalogAPI/EShop.Service.CatalogAPI.csproj", "src/Services/EShop.Service.CatalogAPI/"]
-RUN dotnet restore "./src/Services/EShop.Service.CatalogAPI/EShop.Service.CatalogAPI.csproj"
+COPY ["src/Services/Catalog/EShop.Service.CatalogAPI/EShop.Service.CatalogAPI.csproj", "src/Services/Catalog/EShop.Service.CatalogAPI/"]
+RUN dotnet restore "./src/Services/Catalog/EShop.Service.CatalogAPI/EShop.Service.CatalogAPI.csproj"
 COPY . .
-WORKDIR "/src/src/Services/EShop.Service.CatalogAPI"
+WORKDIR "/src/src/Services/Catalog/EShop.Service.CatalogAPI"
 RUN dotnet build "./EShop.Service.CatalogAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
