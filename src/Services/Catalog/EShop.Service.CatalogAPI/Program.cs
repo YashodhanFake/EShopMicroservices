@@ -1,8 +1,14 @@
 global using Carter;
 global using Mapster;
 global using MediatR;
+global using Marten;
+global using BuidingBlocks.CQRS;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
 
 // Add services to the container
 
@@ -11,6 +17,10 @@ builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
+builder.Services.AddMarten(opt =>
+{
+    opt.Connection(builder.Configuration.GetConnectionString("Database")!);
+}).UseLightweightSessions();
 
 var app = builder.Build();
 

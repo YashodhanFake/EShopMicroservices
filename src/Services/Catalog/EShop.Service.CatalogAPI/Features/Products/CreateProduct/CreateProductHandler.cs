@@ -1,5 +1,4 @@
-﻿using BuidingBlocks.CQRS;
-using EShop.Service.CatalogAPI.Domain.Entities;
+﻿using EShop.Service.CatalogAPI.Domain.Entities;
 
 namespace EShop.Service.CatalogAPI.Features.Products.CreateProduct
 {
@@ -7,7 +6,7 @@ namespace EShop.Service.CatalogAPI.Features.Products.CreateProduct
 
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
@@ -22,7 +21,11 @@ namespace EShop.Service.CatalogAPI.Features.Products.CreateProduct
                 Price = command.Price,
             };
 
-            return new CreateProductResult(Guid.NewGuid());
+            // Save to db
+            session.Store(product);
+            await session.SaveChangesAsync(cancellationToken);
+
+            return new CreateProductResult(product.Id);
         }
     }
 }
