@@ -3,6 +3,8 @@ global using Mapster;
 global using MediatR;
 global using Marten;
 global using BuidingBlocks.CQRS;
+global using EShop.Service.CatalogAPI.Domain.Entities;
+global using EShop.Service.CatalogAPI.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 

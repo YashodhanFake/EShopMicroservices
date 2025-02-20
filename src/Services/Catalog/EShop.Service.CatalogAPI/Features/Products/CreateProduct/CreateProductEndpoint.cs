@@ -8,6 +8,7 @@
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
+            // Config Minimal API Endpoint here - Carter library
             app.MapPost("/products", async (CreateProductRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateProductCommand>();
