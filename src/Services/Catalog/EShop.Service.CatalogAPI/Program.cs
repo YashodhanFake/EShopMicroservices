@@ -2,7 +2,11 @@ global using Carter;
 global using Mapster;
 global using MediatR;
 global using Marten;
+global using FluentValidation;
 global using BuidingBlocks.CQRS;
+global using BuidingBlocks.Behaviors;
+global using BuidingBlocks.Exceptions;
+global using BuidingBlocks.Exceptions.Handler;  
 global using EShop.Service.CatalogAPI.Domain.Entities;
 global using EShop.Service.CatalogAPI.Exceptions;
 
@@ -18,16 +22,22 @@ builder.Services.AddCarter();
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 builder.Services.AddMarten(opt =>
 {
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
+
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
 
 //Configure the HTTPs request pineline
 
 app.MapCarter();
+
+app.UseExceptionHandler(options => { });
 
 app.Run();
