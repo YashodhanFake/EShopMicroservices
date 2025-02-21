@@ -22,7 +22,8 @@ builder.Services.AddCarter();
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
-    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+    config.AddOpenBehavior(typeof(ValidationBehavior<,>)); //CQRS Validation Middleware
+    config.AddOpenBehavior(typeof(LoggingBehavior<,>)); //CQRS Logging Middleware
 });
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 builder.Services.AddMarten(opt =>
