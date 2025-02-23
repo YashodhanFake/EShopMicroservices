@@ -9,6 +9,7 @@ global using BuidingBlocks.Exceptions;
 global using BuidingBlocks.Exceptions.Handler;  
 global using EShop.Service.CatalogAPI.Domain.Entities;
 global using EShop.Service.CatalogAPI.Exceptions;
+using EShop.Service.CatalogAPI.Initialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,12 @@ builder.Services.AddMarten(opt =>
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
 
+//Seeding data in Development environment
+if (builder.Environment.IsDevelopment()) 
+{
+    builder.Services.InitializeMartenWith<CatalogInitialData>();
+}
+    
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
