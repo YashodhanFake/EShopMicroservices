@@ -5,10 +5,14 @@ services:
         dockerfile: Dockerfile
      environment:
         - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_HTTP_PORTS=8080
      ports:
-        - "8080:8080"
+        - "6000:8080"
      depends_on:
         - catalogdb
+     volumes:
+        - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+        - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
   catalogdb:
     container_name: catalogdb
     environment:
