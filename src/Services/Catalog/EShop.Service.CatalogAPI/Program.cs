@@ -7,9 +7,11 @@ global using FluentValidation;
 global using BuidingBlocks.CQRS;
 global using BuidingBlocks.Behaviors;
 global using BuidingBlocks.Exceptions;
-global using BuidingBlocks.Exceptions.Handler;  
+global using BuidingBlocks.Exceptions.Handler;
 global using EShop.Service.CatalogAPI.Domain.Entities;
 global using EShop.Service.CatalogAPI.Exceptions;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using EShop.Service.CatalogAPI.Initialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,12 +36,16 @@ builder.Services.AddMarten(opt =>
 }).UseLightweightSessions();
 
 //Seeding data in Development environment
-if (builder.Environment.IsDevelopment()) 
+if (builder.Environment.IsDevelopment())
 {
     builder.Services.InitializeMartenWith<CatalogInitialData>();
 }
-    
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+// Register HealthChecks
+builder.Services.AddHealthChecks()
+                .AddNpgSql(builder.Configuration.GetConnectionString("Database")!);
 
 var app = builder.Build();
 
@@ -48,5 +54,11 @@ var app = builder.Build();
 app.MapCarter();
 
 app.UseExceptionHandler(options => { });
+
+app.UseHealthChecks("/health",
+    new HealthCheckOptions
+    {
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
 
 app.Run();
