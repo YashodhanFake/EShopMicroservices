@@ -13,6 +13,20 @@ services:
      volumes:
         - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
         - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  basketgapi:
+     build:
+        context: ./src/Services/Basket/EShop.Service.BasketAPI
+        dockerfile: Dockerfile
+     environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_HTTP_PORTS=8080
+     ports:
+        - "6001:8080"
+     depends_on:
+        - basketdb
+     volumes:
+        - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+        - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
   catalogdb:
     container_name: catalogdb
     environment:
@@ -21,6 +35,17 @@ services:
       - POSTGRES_DB=EShopCatalogDb
     restart: always
     ports:
-        - "5432:5432"
+        - "5433:5432"
     volumes:
       - postgres_catalog:/var/lib/postgresql/data/  
+  basketdb:
+    container_name: basketdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=EShopBasketDb
+    restart: always
+    ports:
+        - "5432:5432"
+    volumes:
+      - postgres_basket:/var/lib/postgresql/data/  
