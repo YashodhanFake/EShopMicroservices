@@ -22,10 +22,11 @@ This is my implementation for the course [.NET 8 Microservices](https://www.udem
 - Patterns & Principles
   - Vertical Slice Architecture
   - CQRS Pattern
-  - Mediator Pattern: for implement CQRS
+  - Mediator Pattern: Used for implement CQRS
   - Repository Pattern
-  - Proxy Pattern: for implement Distributed cache
-  - Decorator Pattern: for implement Distributed cache
+  - Proxy Pattern: Used for implement Redis cache
+  - Decorator Pattern: Used for implement Redis cache
+  - Read-Aside Pattern: Caching strategy
   - Dependency Injection
   - Minimal APIs
   - ORM Pattern
