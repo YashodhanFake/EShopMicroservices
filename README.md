@@ -43,3 +43,15 @@ This is my implementation for the course [.NET 8 Microservices](https://www.udem
 - Datastore
   - PostgreSQL used as a Document database (Marten ORM): By using PostgreSQL's JSON column features, Marten ORM transforms PostgreSQL into `.NET Transactional Document DB`
   - Redis distrubuted cache
+## Discount Service
+- Patterns & Principles
+  - N-Layered Architecture
+  - gRPC Protobuf files Endpoints: for service communication
+  - ORM Pattern
+- Library
+  - EF Core ORM
+  - Mapster for Object Mapping
+  - FluentValidation for Input Validation
+- Datastore
+  - SQLite RDMBS: embedded SQL database optimized for efficient small-scale data storage
+
