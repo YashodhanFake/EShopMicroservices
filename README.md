@@ -1,11 +1,19 @@
 # EShopMicroservices
 
-This is my implementation for the course [.NET 8 Microservices](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet).
+This is my exercise to learn how to implement modern software architectures in ASP.NET such as:
+- Microservices
+- Vertical Slice Architecture
+- Clean Architecture
+- CQRS
+
+From the course tutorial [.NET 8 Microservices](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet) by Mehmet Ozkaya.
+
+Thank you very much for sharing your valuable knowledge. It really helps me a lot.
 
 ## Catlog Service
 - Patterns & Principles
   - Vertical Slice Architecture
-  - CQRS Pattern
+  - CQRS
   - Mediator Pattern: for implement CQRS
   - Dependency Injection
   - Minimal APIs
@@ -21,7 +29,7 @@ This is my implementation for the course [.NET 8 Microservices](https://www.udem
 ## Basket Service
 - Patterns & Principles
   - Vertical Slice Architecture
-  - CQRS Pattern
+  - CQRS
   - Mediator Pattern: Used for implement CQRS
   - Repository Pattern
   - Proxy Pattern: Used for implement Redis cache
