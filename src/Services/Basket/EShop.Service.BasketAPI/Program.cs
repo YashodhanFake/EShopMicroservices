@@ -13,6 +13,7 @@ global using EShop.Service.BasketAPI.Domain.Entities;
 global using EShop.Service.BasketAPI.Persistence.Repositories;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using EShop.Service.DiscountGRPC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,21 +22,31 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 // Add services to the container.
 builder.Services.AddCarter(); // Registering API endpoint - Carter
+
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
     config.AddOpenBehavior(typeof(ValidationBehavior<,>)); //CQRS Pineline behavior: Validation Middleware - MediatR
     config.AddOpenBehavior(typeof(LoggingBehavior<,>)); //CQRS Pineline behavior: Logging Middleware - MediatR
 }); // Registering MediatR
+
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);  // Registering Validator - FluentValidation
+
 builder.Services.AddMarten(opt =>
 {
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);
     opt.Schema.For<ShoppingCart>().Identity(x => x.Username);
 }).UseLightweightSessions(); // Registering Marten ORM
 
+// Registering Repositories
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.Decorate<IBasketRepository, CachedBasketRepository>(); // Registering decorator CachedBasketRepository - Scrutor
+
+// Registering gRPC Services
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+{
+    options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+});
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {
