@@ -81,8 +81,8 @@ Thank you very much for sharing your valuable knowledge. It really helps me a lo
     - Aggregate Pattern, Aggregate Root & Root Entity Pattern
     - Strong Typed IDs pattern
     - Domain Events & Integration Events
-  - Library
-    - No libraries. Because the Domain Layer cannot depend on external devices.
+- Library
+  - No libraries. Because the Domain Layer cannot depend on external devices.
 
 #### 2. Order Service: Infrastructure Layer
 - Patterns & Principles
