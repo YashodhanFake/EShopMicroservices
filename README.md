@@ -26,6 +26,7 @@ Thank you very much for sharing your valuable knowledge. It really helps me a lo
   - FluentValidation for Input Validation
 - Datastore
   - PostgreSQL used as a Document database (Marten ORM): By using PostgreSQL's JSON column features, Marten ORM transforms PostgreSQL into `.NET Transactional Document DB`
+
 ## Basket Service
 - Patterns & Principles
   - Vertical Slice Architecture
@@ -51,6 +52,7 @@ Thank you very much for sharing your valuable knowledge. It really helps me a lo
 - Datastore
   - PostgreSQL used as a Document database (Marten ORM): By using PostgreSQL's JSON column features, Marten ORM transforms PostgreSQL into `.NET Transactional Document DB`
   - Redis distrubuted cache
+
 ## Discount Service
 - Patterns & Principles
   - N-Layered Architecture
@@ -60,6 +62,52 @@ Thank you very much for sharing your valuable knowledge. It really helps me a lo
   - EF Core ORM
   - Mapster for Object Mapping
   - FluentValidation for Input Validation
-- Datastore
+-Datastore
   - SQLite RDMBS: embedded SQL database optimized for efficient small-scale data storage
 
+## Order Service
+- Common Patterns & Principles
+  - SOLID
+  - Clean Architecture
+  - Domain-Driven Design: Oriented Microservice with DDD Tactical Patterns
+  - Dependency Injection
+
+#### 1. Order Service: Domain Layer
+- Patterns & Principles
+  - Domain-Driven Design 
+    - Domain Entity Pattern & Entity Base Classes
+    - Anemic Domain Model & Rich Domain Model
+    - Value Object Pattern
+    - Aggregate Pattern, Aggregate Root & Root Entity Pattern
+    - Strong Typed IDs pattern
+    - Domain Events & Integration Events
+  - Library
+    - No libraries. Because the Domain Layer cannot depend on external devices.
+
+#### 2. Order Service: Infrastructure Layer
+- Patterns & Principles
+  - Repository Pattern
+  - ORM Pattern
+    - Entity Configuration: using ModelBuider mapping DDD to EF Core Entity
+  - Domain-Driven Design
+    - Value Object Complex Types & Aggregate Root Entities
+    - Raise & Dispatch Domain: using EF Core ORM & MediatR
+- Library
+  - EF Core ORM
+- Datastore
+  - MSSQL RBMDS 
+
+#### 3. Order Service: Application Layer
+- Patterns & Principles
+  - CQRS
+  - Mediator Pattern: for implement CQRS
+- Library
+  - MediatR for CQRS: This library simplifies the implementation of the CQRS pattern.
+  - Mapster for Object Mapping
+  - FluentValidation for Input Validation
+
+#### 4. Order Service: Presentation Layer (API Layer)
+- Patterns & Principles
+  - Minimal APIs
+- Library
+  - Carter for API Endpoints: Routing and handling HTTP request, easier to define API endpoints with clean and concise code.
