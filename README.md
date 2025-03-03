@@ -69,17 +69,15 @@ Thank you very much for sharing your valuable knowledge. It really helps me a lo
 - Common Patterns & Principles
   - SOLID
   - Clean Architecture
-  - Domain-Driven Design: Oriented Microservice with DDD Tactical Patterns
+  - Tactical Domain-Driven Design: Oriented Microservice 
   - Dependency Injection
 
 #### 1. Order Service: Domain Layer
 - Patterns & Principles
-  - Domain-Driven Design 
-    - Domain Entity Pattern & Entity Base Classes
-    - Anemic Domain Model & Rich Domain Model
-    - Value Object Pattern
-    - Aggregate Pattern, Aggregate Root & Root Entity Pattern
-    - Strong Typed IDs pattern
+  - Tactical Domain-Driven Design 
+    - Entity, Value Object, Aggregate Pattern & Aggregate Root Pattern
+    - Anemic-Domain Model & Rich-Domain Model
+    - Strong Typed IDs
     - Domain Events & Integration Events
 - Library
   - No libraries. Because the Domain Layer cannot depend on external devices.
